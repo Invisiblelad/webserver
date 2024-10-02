@@ -1,5 +1,5 @@
 # webserver
-# Flask Docker App
+## Flask Docker App
 
 This is a simple Flask application that is containerized using Docker. The app serves an HTML page styled with CSS.
 
@@ -20,5 +20,7 @@ docker build -t flask-docker-app .
 # Run the Docker container
 docker run -p 5000:5000 flask-docker-app
 
-Open your browser and go to http://localhost:5000.
+# Open your browser and go to
+
+ http://localhost:5000.
 
