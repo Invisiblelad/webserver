@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sample app</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharath Veerapaneni | Resume</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>Welcome to my app</h1>
-    <img src="{{ url_for('static', filename='wlcm.gif') }}" alt="Welcome" class="welcome">
+    <div class="resume-container">
+        <!-- Profile Section -->
+        <div class="header">
+            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Sharath Profile" class="profile-pic">
+            <div class="contact-info">
+                <h1>Sharath Veerapaneni</h1>
+                <p>DevOps Engineer</p>
+                <p>Email: sharath.veerapaneni@example.com | Phone: (123) 456-7890</p>
+                <p>Location: City, Country | LinkedIn: linkedin.com/in/sharathveerapaneni</p>
+            </div>
+        </div>
 
+        <!-- About Me Section -->
+        <div class="section" id="about">
+            <h2>About Me</h2>
+            <p>
+                A passionate DevOps Engineer with experience in automation, cloud infrastructure, and CI/CD pipelines. 
+                I thrive on optimizing workflows, implementing scalable systems, and bringing efficiency to development processes.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section" id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Languages: Python, Go, Bash</li>
+                <li>DevOps Tools: Docker, Kubernetes, Terraform, Jenkins, Helm</li>
+                <li>Cloud: AWS, IBM Cloud, Azure</li>
+                <li>CI/CD: Git, GitLab, Jenkins, ArgoCD</li>
+                <li>Infrastructure as Code: Terraform, Ansible</li>
+                <li>Monitoring: Prometheus, Grafana, ELK Stack</li>
+            </ul>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="section" id="experience">
+            <h2>Experience</h2>
+            <ul>
+                <li>
+                    <strong>DevOps Engineer | TCS</strong> <span>(2023 - Present)</span>
+                    <ul>
+                        <li>Automated infrastructure provisioning on AWS using Terraform.</li>
+                        <li>Built and maintained CI/CD pipelines using Jenkins, Docker, and Kubernetes.</li>
+                        <li>Implemented monitoring systems with Prometheus and Grafana.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Cloud Engineer | Oracle (Internship)</strong> <span>(2022 - 2023)</span>
+                    <ul>
+                        <li>Assisted in migrating legacy applications to the cloud with Docker and Kubernetes.</li>
+                        <li>Developed infrastructure as code using Terraform and Ansible.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section" id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li>
+                    <strong>Kubernetes & Jenkins Pipeline:</strong>
+                    Deployed a Python application using Docker and Kubernetes, set up a CI/CD pipeline with Jenkins for automated testing and deployment.
+                </li>
+                <li>
+                    <strong>Infrastructure Automation with Terraform:</strong>
+                    Automated cloud infrastructure on AWS using Terraform for resource provisioning and scaling.
+                </li>
+                <li>
+                    <strong>Monitoring System:</strong>
+                    Implemented Prometheus and Grafana for custom metrics and alerting in a cloud-based environment.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section" id="education">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Bachelor of Engineering in Computer Science</strong> | University Name, City <span>(2018 - 2022)</span></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>

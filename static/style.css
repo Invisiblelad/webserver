@@ -1,10 +1,77 @@
 body {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: plum;
-    text-align: center;
-    padding: 50px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
 }
 
-h1 {
-    color: beige;
+.resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.contact-info h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #0056b3;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ul li strong {
+    color: #0056b3;
+}
+
+ul li span {
+    color: #666;
+    font-size: 0.9em;
+}
+
+ul li ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+ul li ul li {
+    margin-bottom: 5px;
 }
