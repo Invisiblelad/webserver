@@ -3,7 +3,6 @@
 
 This is a simple Flask application that is containerized using Docker. The app serves an HTML page styled with CSS.
 
-
 ## Architecture
 
 ![CICD](./images/cicd-oct7.jpg)
@@ -14,7 +13,6 @@ This is a simple Flask application that is containerized using Docker. The app s
 - Basic knowledge of Flask and Docker
 
 ## Installation
-
 ```bash
 # Build the Docker image
 docker build -t flask-docker-app .
