@@ -6,7 +6,11 @@ This is a simple Flask application that is containerized using Docker. The app s
 
 ## Architecture
 
+<<<<<<< HEAD
 ![CICD](./images/cicd.drawio)
+=======
+![CICD](./images/cicd.drawio.svg)
+>>>>>>> c01ce48 (added workflow)
 
 
 ## Prerequisites
