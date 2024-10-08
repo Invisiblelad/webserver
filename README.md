@@ -3,7 +3,10 @@
 
 This is a simple Flask application that is containerized using Docker. The app serves an HTML page styled with CSS.
 
-## Project Structure
+
+## Architecture
+
+![CICD](./images/cicd.drawio)
 
 
 ## Prerequisites
