@@ -20,6 +20,6 @@ docker build -t flask-docker-app .
 # Run the Docker container
 docker run -p 5000:5000 flask-docker-app
 
-# Open your browser and go to
+# Open your browser 
 http://localhost:5000.
 
