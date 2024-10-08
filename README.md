@@ -8,8 +8,6 @@ This is a simple Flask application that is containerized using Docker. The app s
 
 ![CICD](./images/cicd-oct7.jpg)
 
-
-
 ## Prerequisites
 
 - [Docker](https://www.docker.com/) installed
