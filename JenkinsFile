@@ -3,12 +3,12 @@ pipeline {
     environment {
         dockeruser = credentials('dockeruser')
         dockerpwd  = credentials('dockerpwd')
-        TERRAFORM_DIR = './terraform'
+        TERRAFORM_DIR = 'terraform'
     }
     stages {
         stage('Git Checkout') {
             steps {
-                checkout scm
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Invisiblelad/webserver.git']])
             }
         }
         stage('Docker Login') {
