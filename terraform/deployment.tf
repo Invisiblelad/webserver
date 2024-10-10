@@ -7,7 +7,7 @@ resource "kubernetes_deployment" "webpage" {
       replicas = 1
       selector {
         match_labels = {
-          app = "webserver"
+          app = "webpage"
         }
       }
       template {
