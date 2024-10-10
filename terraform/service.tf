@@ -4,7 +4,7 @@ resource "kubernetes_service" "web-svc" {
     }
     spec {
       selector = {
-            app = "webserver"
+            app = "webpage"
     }
       port {
         port = 5000
