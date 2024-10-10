@@ -1,6 +1,6 @@
 resource "kubernetes_service" "web-svc" {
     metadata {
-      name = webpage
+      name = "webpage"
     }
     spec {
       selector = {
@@ -12,6 +12,6 @@ resource "kubernetes_service" "web-svc" {
         port = 5000
         target_port = 5000
       }
-      type = NodePort
+      type = "NodePort"
 }
 }
