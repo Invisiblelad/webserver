@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         dockeruser = credentials('dockeruser')
-        dockerpwd = credentials('dockerpwd') 
+        dockerpwd  = credentials('dockerpwd')
+        TERRAFORM_DIR = 'terraform'
     }
     stages {
         stage('Git Checkout') {
@@ -17,49 +18,51 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
+        stage('Docker Build and Push') {
             steps {
                 script {
-                    sh "docker build -t ${dockeruser}/serverr:${BUILD_NUMBER} ."
+                    sh """
+                        docker build -t ${dockeruser}/serverr:${BUILD_NUMBER} .
+                        docker push ${dockeruser}/serverr:${BUILD_NUMBER}
+                    """
                 }
             }
         }
-        stage('Docker Push') {
+        stage('Terraform Init') {
             steps {
-                script {
-                    sh "docker push ${dockeruser}/serverr:${BUILD_NUMBER}"
-                }
-            }
-        }
-        stage('Integrate Remote k8s with Jenkins') {
-            steps {
-                withKubeCredentials([[ 
-                    caCertificate: '', 
-                    clusterName: 'Kubernetes', 
-                    contextName: '', 
-                    credentialsId: 'kubernetes', 
-                    namespace: 'default', 
-                    serverUrl: 'https://172.31.37.124:16443' 
-                ]]) {
+                dir("${TERRAFORM_DIR}") {
                     script {
-                        sh '''
-                        if ! command -v kubectl >/dev/null 2>&1; then
-                            curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl" && chmod u+x ./kubectl
-                        fi
-
-                        # Check if the deployment exists
-                        if ./kubectl get deployment webserver >/dev/null 2>&1; then
-                            echo "Deployment exists, updating image..."
-                            ./kubectl set image deployment/webserver serverr=${dockeruser}/serverr:${BUILD_NUMBER}
-                        else
-                            echo "Deployment does not exist, creating new deployment..."
-                            ./kubectl create deployment webserver --image=${dockeruser}/serverr:${BUILD_NUMBER}
-                            ./kubectl expose deployment webserver --port=5000 --target-port=5000 --type=NodePort
-                        fi
-                        '''
+                        sh 'terraform init'
                     }
                 }
             }
+        }
+        stage('Terraform Plan') {
+            steps {
+                dir("${TERRAFORM_DIR}") {
+                    script {
+                        sh """
+                            terraform plan -var docker_image=${dockeruser}/serverr -var image_tag=${BUILD_NUMBER}
+                        """
+                    }
+                }
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                dir("${TERRAFORM_DIR}") {
+                    script {
+                        sh """
+                            terraform apply -auto-approve -var docker_image=${dockeruser}/serverr -var image_tag=${BUILD_NUMBER}
+                        """
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
