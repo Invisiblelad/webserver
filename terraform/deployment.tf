@@ -18,7 +18,7 @@ resource "kubernetes_deployment" "webpage" {
         }
         spec {
           container {
-            name = webserver
+            name = "webserver"
             image = "${var.docker_image}:${var.image_tag}"
             port {
               container_port = 5000
