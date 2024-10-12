@@ -4,7 +4,7 @@ resource "kubernetes_deployment" "webpage" {
       namespace = "default"
     }
     spec {
-      replicas = 2
+      replicas = 3
       selector {
         match_labels = {
           app = "webpage"
